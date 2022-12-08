@@ -16,29 +16,31 @@ with codecs.open('wordlist.txt', 'r', encoding='utf-8') as f:
   # Create an empty dictionary to store the n-grams and their counts
   ngram_counts = {}
   
-  # Set the minimum and maximum values of n
-  min_n = 3
-  max_n = 6
+  # Prompt the user to enter the value of n
+  n = int(input("Enter the value of n: "))
+
+  # Check that the value of n is between 3 and 6
+  if n < 3 or n > 6:
+    print("Error: the value of n must be between 3 and 6.")
+    exit()
   
-  # Loop through the values of n between min_n and max_n
-  for n in range(min_n, max_n+1):
-    for line in f:
-      # Remove any leading or trailing whitespace from the line
-      line = line.strip()
+  for line in f:
+    # Remove any leading or trailing whitespace from the line
+    line = line.strip()
 
-      # Remove any formatting from the line
-      line = line.replace(",", "").replace(".", "").replace("-", "")
+    # Remove any formatting from the line
+    line = line.replace(",", "").replace(".", "").replace("-", "")
 
-      # Convert the line to its corresponding n-grams
-      ngrams = word_to_ngrams(line, n)
-      
-      # Loop through the n-grams and update their counts in the dictionary
-      for ngram in ngrams:
-        if ngram in ngram_counts:
-          ngram_counts[ngram] += 1
-        else:
-          ngram_counts[ngram] = 1
+    # Convert the line to its corresponding n-grams
+    ngrams = word_to_ngrams(line, n)
     
+    # Loop through the n-grams and update their counts in the dictionary
+    for ngram in ngrams:
+      if ngram in ngram_counts:
+        ngram_counts[ngram] += 1
+      else:
+        ngram_counts[ngram] = 1
+  
 # Open the ngramoutput.txt file for writing
 with codecs.open('ngramoutput.txt', 'w', encoding='utf-8') as f:
   # Create a list of tuples containing the n-grams and their counts,
