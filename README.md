@@ -3,7 +3,9 @@ This code counts the number of occurrences of each n-gram (a group of n consecut
 
 Usage
 To run the code, enter the following command in the terminal:
-``python ngramcounter.py``
+```python 
+python3 ngramcounter.py
+```
 
 The code will prompt you to enter the value of n, which specifies the length of the n-grams to generate. The value of n must be between 3 and 6.
 
