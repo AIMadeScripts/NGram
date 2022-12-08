@@ -47,6 +47,6 @@ with codecs.open('ngramoutput.txt', 'w', encoding='utf-8') as f:
   # sorted in descending order by count
   ngram_counts_sorted = sorted(ngram_counts.items(), key=lambda x: x[1], reverse=True)
   
-  # Write each n-gram and its count to the file on a new line
+  # Write each n-gram to the file on a new line
   for ngram, count in ngram_counts_sorted:
-    f.write(str(count) + ": " + ngram + "\n")
+    f.write(ngram + "\n")
